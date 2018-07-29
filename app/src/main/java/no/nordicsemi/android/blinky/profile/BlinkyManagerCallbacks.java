@@ -31,12 +31,12 @@ public interface BlinkyManagerCallbacks extends BleManagerCallbacks {
 	 *
 	 * @param state true if the button was pressed, false if released
 	 */
-	void onDataReceived(final boolean state);
+	void onDataReceived(final boolean state, final String data);
 
 	/**
 	 * Called when the data has been sent to the connected device.
 	 *
 	 * @param state true when LED was enabled, false when disabled
 	 */
-	void onDataSent(final boolean state);
+	void onDataSent(final boolean state, final String result);
 }

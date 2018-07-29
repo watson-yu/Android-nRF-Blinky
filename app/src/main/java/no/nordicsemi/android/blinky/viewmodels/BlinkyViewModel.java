@@ -48,6 +48,9 @@ import no.nordicsemi.android.log.LogSession;
 import no.nordicsemi.android.log.Logger;
 
 public class BlinkyViewModel extends AndroidViewModel implements BlinkyManagerCallbacks {
+
+	private String receivedData = "";
+
 	private final BlinkyManager mBlinkyManager;
 
 	// Connection states Connecting, Connected, Disconnecting, Disconnected etc.
@@ -130,12 +133,15 @@ public class BlinkyViewModel extends AndroidViewModel implements BlinkyManagerCa
 	}
 
 	@Override
-	public void onDataReceived(final boolean state) {
+	public void onDataReceived(final boolean state, final String data) {
+		if (data != null) {
+			receivedData += data.replaceAll("null", "");
+		}
 		mButtonState.postValue(state);
 	}
 
 	@Override
-	public void onDataSent(final boolean state) {
+	public void onDataSent(final boolean state, final String result) {
 		mLEDState.postValue(state);
 	}
 

@@ -103,7 +103,9 @@ public class ScannerViewModel extends AndroidViewModel {
 		// Let's use the filter to scan only for Blinky devices
 		final ParcelUuid uuid = new ParcelUuid(BlinkyManager.LBS_UUID_SERVICE);
 		final List<ScanFilter> filters = new ArrayList<>();
-		filters.add(new ScanFilter.Builder().setServiceUuid(uuid).build());
+
+		//FIXME: do NOT filter, to list everything
+		//filters.add(new ScanFilter.Builder().setServiceUuid(uuid).build());
 
 		final BluetoothLeScannerCompat scanner = BluetoothLeScannerCompat.getScanner();
 		scanner.startScan(filters, settings, scanCallback);
